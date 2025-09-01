@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.netlify.studypal120.twa",
+        "sha256_cert_fingerprints": ["70:F1:F5:AF:D4:94:96:48:5D:B1:BE:29:D0:5C:32:4F:5A:74:88:DF:EE:80:80:95:59:3B:97:22:CE:ED:11:21"]
+      }
+    }]

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDYPAL - Study Notes & Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3f51b5">
+    
+</head>
+<body>
+    <!-- Login/Register Section -->
+    <div id="auth-section" class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 class="logo">STUDYPAL</h1>
+                <p class="tagline">Your absolute study Pal</p>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="login-form" class="auth-form">
+                <h2>Welcome Back</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+                <p class="auth-switch">
+                    Don't have an account? 
+                    <a href="#" id="showRegister">Sign up</a>
+                </p>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="register-form" class="auth-form hidden">
+                <h2>Create Account</h2>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+                <p class="auth-switch">
+                    Already have an account? 
+                    <a href="#" id="showLogin">Sign in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard-section" class="dashboard hidden">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1 class="logo">StudyPal</h1>
+                <div class="user-info">
+                    <span id="userName">Welcome!</span>
+                    <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="dashboard-nav">
+            <button id="notesTab" class="nav-btn active">📝 Notes</button>
+            <button id="quizTab" class="nav-btn">🧠 Quiz</button>
+        </nav>
+
+        <!-- Notes Section -->
+        <div id="notes-section" class="content-section">
+            <div class="section-header">
+                <h2>Study Notes</h2>
+                <button id="addNoteBtn" class="btn btn-primary">+ Add Note</button>
+            </div>
+            
+            <!-- Add/Edit Note Form -->
+            <div id="noteForm" class="note-form hidden">
+                <h3 id="formTitle">Add New Note</h3>
+                <form id="noteFormElement">
+                    <div class="input-group">
+                        <label for="noteTitle">Title</label>
+                        <input type="text" id="noteTitle" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="noteContent">Content</label>
+                        <textarea id="noteContent" rows="6" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="saveNoteBtn">Save Note</button>
+                        <button type="button" class="btn btn-secondary" id="cancelNoteBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Notes List -->
+            <div id="notesList" class="notes-grid">
+                <!-- Notes will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="content-section hidden">
+            <div class="section-header">
+                <h2>Study Quiz</h2>
+                <p>Test your knowledge with these questions</p>
+            </div>
+            
+            <!-- Quiz Container -->
+            <div id="quizContainer" class="quiz-container">
+                <div id="quizStart" class="quiz-start">
+                    <h3>Ready to test your knowledge?</h3>
+                    <p>This quiz contains 5 multiple-choice questions about general study topics.</p>
+                    <button id="startQuizBtn" class="btn btn-primary">Start Quiz</button>
+                </div>
+                
+                <div id="quizQuestions" class="quiz-questions hidden">
+                    <div class="quiz-progress">
+                        <span id="questionNumber">Question 1 of 5</span>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="questionContainer" class="question-container">
+                        <!-- Questions will be dynamically inserted here -->
+                    </div>
+                    
+                    <div class="quiz-actions">
+                        <button id="nextQuestionBtn" class="btn btn-primary" disabled>Next Question</button>
+                    </div>
+                </div>
+                
+                <div id="quizResults" class="quiz-results hidden">
+                    <h3>Quiz Complete!</h3>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="finalScore">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                    </div>
+                    <p id="scoreMessage">Great job!</p>
+                    <button id="retakeQuizBtn" class="btn btn-primary">Retake Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert/Notification -->
+    <div id="alert" class="alert hidden">
+        <span id="alertMessage"></span>
+        <button id="closeAlert" class="alert-close">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
